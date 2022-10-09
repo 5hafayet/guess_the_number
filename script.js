@@ -4,6 +4,11 @@ let secretNumber = Math.floor(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
+const displayMessage = function (message) {
+    document.querySelector('.message').textContent =
+        message;
+}
+
 
 document.querySelector('.check').addEventListener('click', function () {
   const x = Number(document.querySelector('.guess').value);
@@ -13,23 +18,22 @@ document.querySelector('.check').addEventListener('click', function () {
   }
     // if correct
   if (x === secretNumber) {
-    document.querySelector('.message').textContent =
-      '✌️✌️ Congratulations ✌️✌️';
+      displayMessage('✌️✌️ Congratulations ✌️✌️');
   }
   //if small
   else if (x < secretNumber) {
     if (Math.abs(x - secretNumber) > 5)
-      document.querySelector('.message').textContent = '⬇️⬇️ Too Small';
+      displayMessage('⬇️⬇️ Too Small');
     else document.querySelector('.message').textContent = '⬇️ Small';
   }
   //if large
   else if (x > secretNumber) {
     if (Math.abs(x - secretNumber) > 5)
-      document.querySelector('.message').textContent = '⬆️⬆️ Too Big';
-    else document.querySelector('.message').textContent = '⬆️ Big';
+      displayMessage('⬆️⬆️ Too Big');
+    else displayMessage('⬆️ Big');
   }
   else {
-      document.querySelector('.message').textContent = '😑 Invalid Input 😑';
+      displayMessage('😑 Invalid Input 😑');
   }
     
    // score update
